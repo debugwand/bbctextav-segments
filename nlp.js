@@ -38,7 +38,6 @@ const analyze = (text) => {
 	});
 };
 
-
 const getText = (vttAsJson) => {
 	const justText = vttAsJson.map(items => {
 		return items.part;
@@ -56,7 +55,6 @@ const splitChunks = (vttText) => {
 	return chunks;
 };
 
-// const addCategoryToVTTJson = ({chunk, topCategoryName, vttText}) => {
 const addCategoryToVTTJson = (vttAsJson, topCategoryName, index) => {
 	const start = index * 10;
 	const end = start + 10;
@@ -71,19 +69,18 @@ const addCategoryToVTTJson = (vttAsJson, topCategoryName, index) => {
 module.exports = async (vttAsJson) => {
 	const vttText = getText(vttAsJson);
 	const chunks = splitChunks(vttText);
-	//cant' know when we have the last one done. promise all?
 	const analysedChunks = chunks.map(chunk => {
 		return analyze(chunk);
 	});
 	return Promise.all(analysedChunks)
 		.then(analysedTexts => {
+			console.log("all done")
 			analysedTexts.forEach((analysedText, index) => {
 				if (analysedText && analysedText.categories) {
 					const topCategoryName = topCategory(analysedText.categories);
 					addCategoryToVTTJson(vttAsJson, topCategoryName, index);
 				}
-			})
-			console.log(vttAsJson)
+			});
 			return vttAsJson;
 		})
 		.catch (err => {
