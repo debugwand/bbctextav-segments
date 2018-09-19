@@ -1,0 +1,26 @@
+{
+  "name": "bbctextav-segments",
+  "version": "1.0.0",
+  "description": "Hackday detecting segments in transcripts",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/debugwand/bbctextav-segments.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/debugwand/bbctextav-segments/issues"
+  },
+  "homepage": "https://github.com/debugwand/bbctextav-segments#readme",
+  "dependencies": {
+    "dotenv": "^6.0.0",
+    "express": "^4.16.3",
+    "node-fetch": "^2.2.0",
+    "vtt-to-json": "^0.1.1",
+    "watson-developer-cloud": "^3.10.0"
+  }
+}
