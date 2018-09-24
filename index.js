@@ -16,7 +16,7 @@ app.get('/', async (req, res, next) => {
 	}
 	//todo: can we await this?
 	categoryClusters(entities, {
-		neighbourThreshold: 2000
+		neighbourThreshold: 4000
 	})
 		.then(results => {
 			results.clusters.forEach(result => {
